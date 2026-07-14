@@ -801,10 +801,13 @@ p {
 
 .project-card img {
   position: absolute;
+  z-index: 0;
   inset: 0;
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  backface-visibility: hidden;
   transform: translateZ(0) scale(1.01);
   transition:
     transform 720ms var(--ease-silk),
@@ -1642,16 +1645,14 @@ p {
 }
 
 .motion-enhanced img.motion-image {
-  opacity: 0;
-  clip-path: inset(100% 0 0 0);
-  transform: translate3d(0, calc(var(--parallax-y, 0px) + 18px), 0) scale(1.06);
+  opacity: 1;
+  clip-path: inset(0);
+  transform: translate3d(0, var(--parallax-y, 0px), 0) scale(1.035);
   transform-origin: center;
   transition:
-    clip-path 1.08s var(--ease-mask),
     transform 1.22s var(--ease-grand),
-    opacity 0.72s ease,
     filter 0.72s ease;
-  will-change: transform, clip-path, opacity;
+  will-change: transform;
 }
 
 .motion-enhanced img.motion-image.is-in-view {
